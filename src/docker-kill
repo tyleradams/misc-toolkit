@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+FIRST_IMAGE=$(docker ps --format "{{.ID}}" | head -n1)
+IMAGE=${1:-$FIRST_IMAGE}
+docker kill $IMAGE

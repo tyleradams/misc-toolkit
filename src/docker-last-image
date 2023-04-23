@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+docker images --format '{{.ID}}' | head -n1

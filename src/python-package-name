@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -eou pipefail
+
+PN=$1
+FOLDER=$(python3 -c "import pkg_resources; print(pkg_resources.get_distribution('${PN}').egg_info)")
+cat $FOLDER/top_level.txt

@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+DIR="$1"
+GIT_REMOTE_URL="$2"
+
+if [ -d $DIR ]; then
+    verify-git-remote "$DIR" "$GIT_REMOTE_URL"
+else
+    #mkdir -p $DIR
+    pushd $DIR > /dev/null
+    #git clone $GIT_REMOTE_URL
+    popd > /dev/null
+    exit 0
+fi

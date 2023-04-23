@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+RAW_QUERY=$1
+MAP='{
+    "commit msg": "From the following diff, create just a git commit message without quotes",
+    "commit message": "From the following diff, create just a git commit message without quotes",
+    "comment": "From the following code, create a comment and then append the original code below it"
+}'
+QUERY=$(echo $MAP | jq -r ".[\"${RAW_QUERY}\"] // \"${RAW_QUERY}\"")
+
+cat | gpt - "$QUERY"

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "$#" -ne 1 ]]; then
+    echo "Usage notify: Pass the notification message on stdin"
+    exit 1
+fi
+DATA="$(cat)"
+notify-send "$DATA"

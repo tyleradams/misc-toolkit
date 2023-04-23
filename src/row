@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+ROW_NUMBER="$1"
+cat | sed -n "${ROW_NUMBER}p"

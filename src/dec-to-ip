@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# https://www.commandlinefu.com/commands/view/24198/convert-decimal-to-ip-from-stdin
+awk {'print rshift(and($1, 0xFF000000), 24) "." rshift(and($1, 0x00FF0000), 16) "." rshift(and($1, 0x0000FF00), 8) "." and($1, 0x000000FF)'}

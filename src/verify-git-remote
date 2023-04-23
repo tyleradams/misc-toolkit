@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+DIR="$1"
+GIT_REMOTE_URL="$2"
+
+if [ -d $DIR ]; then
+    pushd $DIR > /dev/null
+    ACTUAL_REMOTE_URL="$(git remote get-url origin 2>/dev/null)"
+    popd > /dev/null
+    if [ "$ACTUAL_REMOTE_URL" == "$GIT_REMOTE_URL" ]; then
+        exit 0
+    else
+        echo "Git url should be $GIT_REMOTE_URL but is $ACTUAL_REMOTE_URL"
+        exit 1
+    fi
+fi

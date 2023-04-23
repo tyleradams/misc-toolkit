@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# takes in null byte delimited names
+FILES="$(cat)"
+QUOTED_NAMES="$(mktemp)"
+FIXED_NAMES="$(mktemp)"
+
+find -print0 | sed -z -e 's/"/\"/g' -e "s/.*/"&"/" > $QUOTED_NAMES
+find -print0 |
+tr "&" '_and_' |
+tr "`!@$*\|:;"'<?/\n" '_' |
+tr "()[]{}" '-' |
+> $FIXED_NAMES
+paste -d ' ' -z $QUOTED_NAMES $FIXED_NAMES |
+sed -z 's/^/mv /' |
+tr '\0' '\n'

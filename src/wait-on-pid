@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+PID="$1"
+
+while [[ -d /proc/$PID/ ]]; do
+    sleep 1
+done

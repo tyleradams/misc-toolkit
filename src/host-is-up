@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+HOST="$1"
+ping $HOST -c 1 > /dev/null

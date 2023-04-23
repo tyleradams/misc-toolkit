@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+FIND="$1"
+REPLACE="$2"
+
+sed "s#.*#sed -i \"s%${FIND}%${REPLACE}%g\" &#"

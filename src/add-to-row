@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+LINE="$(cat)"
+FILE="$1"
+ROW="$2"
+
+echo -e "${ROW}i\n${LINE}\n.\nwq\n" | ex "${FILE}"

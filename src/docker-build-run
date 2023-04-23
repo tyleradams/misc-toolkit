@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+docker build .
+IMAGE=$(docker images --format '{{.ID}}' | head -n1)
+docker run $IMAGE

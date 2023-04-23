@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+FIRST_CONTAINER=$(docker ps --format '{{.ID}}' | head -n1)
+CONTAINER=${1:-$FIRST_CONTAINER}
+docker exec -it $CONTAINER bash

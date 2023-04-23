@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+FIND=$1
+REPLACE=$2
+
+find | sed "s,^,ex -c \"%s@$FIND@$REPLACE@g\" -c \"x\" ," # | bash

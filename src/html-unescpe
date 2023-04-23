@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+
+import html
+import sys
+
+s = sys.stdin.read()
+print(html.unescape(s))
