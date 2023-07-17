@@ -1,0 +1,71 @@
+#!/usr/bin/env python3
+
+import sys
+import re
+import click
+from email.utils import parseaddr
+
+@click.command()
+@click.argument('release')
+@click.argument('package_name')
+def main(release, package_name):
+    git_log = sys.stdin.read()
+    commits = parse_git_log(git_log)
+    version = (0, 0, 0, 1)
+    entries = []
+
+    for commit in reversed(commits):
+        entry, version = create_changelog_entry(commit, release, package_name, version)
+        entries.append(entry)
+    for e in reversed(entries):
+        print(e)
+
+
+def create_changelog_entry(commit_info, release, package_name, version):
+    """Create a Debian changelog entry based on commit information."""
+    version = default_version_change(commit_info["message"], version)
+    v = version
+    version_s = f"{v[0]}.{v[1]}.{v[2]}-{v[3]}"
+    author, email = parseaddr(commit_info["author"])
+    date = commit_info["date"]
+    message = commit_info["message"].replace("\n", " ")
+
+    return (f"""{package_name} ({version_s}) {release}; urgency=medium
+
+  [{author}]
+  * {message}
+
+ -- {author} <{email}>  {date}""", version)
+
+def default_version_change(message, version):
+    if "patch bump" in message:
+        return (version[0], version[1], version[2] + 1, 1)
+    elif "major bump" in message:
+        return (version[0] + 1, 0, 0, 1)
+    return (version[0], version[1] + 1, 0, 1)
+
+def parse_git_log(git_log):
+    """Parse the output of `git log` into a list of commit information dictionaries."""
+    commits = []
+    commit_info = {}
+
+    for line in git_log.split("\n"):
+        if line.startswith("commit"):
+            if commit_info:
+                commits.append(commit_info)
+            commit_info = {"hash": line.split(" ")[1]}
+        elif line.startswith("Author:"):
+            commit_info["author"] = line[7:].strip()
+        elif line.startswith("Date:"):
+            commit_info["date"] = line[5:].strip()
+        elif line.strip() != "":
+            commit_info["message"] = line.strip()
+
+    if commit_info:
+        commits.append(commit_info)
+
+    return commits
+
+
+if __name__ == "__main__":
+    main()
