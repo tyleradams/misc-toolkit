@@ -1,3 +1,27 @@
+misc-toolkit (1.3.0-1) jammy; urgency=medium
+
+  [Tyler Adams]
+  * minor bump
+
+ -- Tyler Adams <tyler@blitzblitzblitz.com>  Mon, 17 Jul 2023 09:07:42 -0400
+misc-toolkit (1.2.0-1) jammy; urgency=medium
+
+  [Tyler Adams]
+  * minor bump
+
+ -- Tyler Adams <tyler@blitzblitzblitz.com>  Mon, 17 Jul 2023 09:07:38 -0400
+misc-toolkit (1.1.0-1) jammy; urgency=medium
+
+  [Tyler Adams]
+  * minor bump
+
+ -- Tyler Adams <tyler@blitzblitzblitz.com>  Mon, 17 Jul 2023 09:07:37 -0400
+misc-toolkit (1.0.0-1) jammy; urgency=medium
+
+  [Tyler Adams]
+  * major bump removing gpt and pjito to not conflict
+
+ -- Tyler Adams <tyler@blitzblitzblitz.com>  Mon, 17 Jul 2023 09:06:59 -0400
 misc-toolkit (0.4.0-1) jammy; urgency=medium
 
   [Tyler Adams]
