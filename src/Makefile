@@ -1,3 +1,5 @@
+all :
+
 install :
 	mkdir -p $(DESTDIR)$(prefix)/bin
 	install add-to-row $(DESTDIR)$(prefix)/bin
@@ -15,18 +17,18 @@ install :
 	install fcd $(DESTDIR)$(prefix)/bin
 	install find-and-replace $(DESTDIR)$(prefix)/bin
 	install gen-password $(DESTDIR)$(prefix)/bin
-	install gpt $(DESTDIR)$(prefix)/bin
+	install git-to-changelog $(DESTDIR)$(prefix)/bin
 	install cf $(DESTDIR)$(prefix)/bin
 	install has-env $(DESTDIR)$(prefix)/bin
 	install host-is-up $(DESTDIR)$(prefix)/bin
 	install html-unescpe $(DESTDIR)$(prefix)/bin
 	install inplace-filter $(DESTDIR)$(prefix)/bin
+	install math-sum $(DESTDIR)$(prefix)/bin
 	install newline-end-of-file $(DESTDIR)$(prefix)/bin
 	install notify $(DESTDIR)$(prefix)/bin
 	install open-last-downloaded $(DESTDIR)$(prefix)/bin
 	install pbcopy $(DESTDIR)$(prefix)/bin
 	install pbpaste $(DESTDIR)$(prefix)/bin
-	install pjito $(DESTDIR)$(prefix)/bin
 	install python-package-name $(DESTDIR)$(prefix)/bin
 	install recursive-find-replace $(DESTDIR)$(prefix)/bin
 	install row $(DESTDIR)$(prefix)/bin
